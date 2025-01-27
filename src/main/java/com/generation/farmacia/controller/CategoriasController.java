@@ -46,29 +46,29 @@ public class CategoriasController {
     @GetMapping("/nome/{nome}")
     public ResponseEntity<List<Categorias>> getByNome(@PathVariable String nome){
         return ResponseEntity.ok(categoriaRepository
-            .findAllByCategoriaContainingIgnoreCase(nome));
+            .findAllByNomeContainingIgnoreCase(nome));
     }
     
     @PostMapping
-    public ResponseEntity<Categorias> post(@Valid @RequestBody Categorias categoria){
+    public ResponseEntity<Categorias> post(@Valid @RequestBody Categorias nome){
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(categoriaRepository.save(categoria));
+                .body(categoriaRepository.save(nome));
     }
     
     @PutMapping
-    public ResponseEntity<Categorias> put(@Valid @RequestBody Categorias categoria){
-        return categoriaRepository.findById(categoria.getId())
+    public ResponseEntity<Categorias> put(@Valid @RequestBody Categorias nome){
+        return categoriaRepository.findById(nome.getId())
             .map(resposta -> ResponseEntity.status(HttpStatus.CREATED)
-            .body(categoriaRepository.save(categoria)))
+            .body(categoriaRepository.save(nome)))
             .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
     
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        Optional<Categorias> categoria = categoriaRepository.findById(id);
+        Optional<Categorias> nome = categoriaRepository.findById(id);
         
-        if(categoria.isEmpty())
+        if(nome.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         
         categoriaRepository.deleteById(id);              
