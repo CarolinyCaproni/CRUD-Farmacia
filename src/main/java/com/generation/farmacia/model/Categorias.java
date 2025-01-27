@@ -18,7 +18,7 @@ public class Categorias {
 	
 	@NotBlank(message = "Esse campo é obrigatório")
 	@Size(min = 2, max = 255, message = "O atributo nome deve conter no minimo 2 e no maximo 255 caracteres")
-	private String categoria;
+	private String nome;
 	
 	@NotBlank(message = "Esse campo é obrigatório")
 	@Size(min = 2, max = 500, message = "O atributo nome deve conter no minimo 2 e no maximo 500 caracteres")
@@ -33,11 +33,11 @@ public class Categorias {
 	}
 
 	public String getCategoria() {
-		return categoria;
+		return nome;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setCategoria(String nome) {
+		this.nome = nome;
 	}
 
 	public String getDecricao() {

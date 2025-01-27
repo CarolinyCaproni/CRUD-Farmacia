@@ -9,6 +9,6 @@ import com.generation.farmacia.model.Categorias;
 
 public interface CategoriasRepository extends JpaRepository<Categorias, Long>{
 	
-	public List<Categorias> findAllByCategoriaContainingIgnoreCase(@Param("categoria") String categoria);
+	public List<Categorias> findAllByCategoriaContainingIgnoreCase(@Param("nome") String nome);
 
 }
